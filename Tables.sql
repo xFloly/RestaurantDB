@@ -97,7 +97,6 @@ Create Table Reservations (
 	StartDate datetime not null,
 	EndDate datetime not null,
 	ReservationDate datetime not null,
-	ReservationStatus int not null
 	Constraint PK_Reservations Primary Key (ReservationID),
 	Constraint FK_CustomerID_TO_Customers3 Foreign Key (CustomerID) references Customers(CustomerID),
 	Constraint CK_StartDate check (StartDate >= ReservationDate),
@@ -150,24 +149,24 @@ Create Table Discount (
 	DiscountID int not null,
 	CustomerID int not null,
 	ValidFrom datetime not null, 
-	ValidTo datetime not null,
+	ValidTo datetime null,
 	DiscountValue real not null,
 	Constraint PK_Discount Primary Key (DiscountID),
 	Constraint FK_CustomerID_TO_Customers6 Foreign Key (CustomerID) references Customers(CustomerID),
-	Constraint CK_ValidTo Check (ValidFrom < ValidTo),
+	Constraint CK_ValidTo Check (ValidFrom < ValidTo OR ValidFrom is null),
 	Constraint CK_DiscountValue Check (DiscountValue > 0 AND DiscountValue < 1)
 )
 
 Create Table EmployeesCategory (
 	CategoryID int not null,
-	CategoryName int not null,
+	CategoryName nvarchar(256) not null,
 	Constraint PK_EmployeesCategory Primary Key (CategoryID),
 	Constraint UQ_CategoryName Unique (CategoryName)
 )
 
  Create Table Employees (
 	EmployeeID int not null,
-	PersonID int not null,
+	PersonID int not null, 
 	CategoryID int not null,
 	ReportsTo int null,
 	Constraint PK_Employees Primary Key (EmployeeID),
@@ -183,13 +182,11 @@ create table Orders	(
 	EmployeeID int not null,
 	CustomerID int not null,
 	OrderDate datetime not null,
-	OutDate datetime null,
-	PaidDate datetime null,
+	PaidDate datetime not null,
 	Constraint PK_Orders Primary Key (OrderID),
 	Constraint FK_EmployeeID_TO_Employees Foreign Key (EmployeeID) references Employees(EmployeeID),
 	Constraint FK_CustomerID_TO_Customers7 Foreign Key (CustomerID) references Customers(CustomerID),
-	Constraint CK_OutDate2 Check (OutDate is null OR OutDate > OrderDate),
-	Constraint CK_PaidDate Check (PaidDate is null OR PaidDate > OutDate),
+	Constraint CK_OutDate2 check (PaidDate > OrderDate),
 	Constraint CK_EmployeeCategory Check (dbo.CheckFunction(3) = 1)
 )
 
@@ -264,4 +261,3 @@ Create Table Products (
 	Constraint FK_EmployeeID_from_Employees2 Foreign Key (EmployeeID) references Employees(EmployeeID),
 	Constraint CK_EmployeeID Check (dbo.CheckFunction(2) = 1) 
 )
-
