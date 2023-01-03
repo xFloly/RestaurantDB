@@ -1,5 +1,5 @@
 --VIEW 1
---wyswietla wszystkie pozycje w menu, które kiedyokolwiek wyst¹pi³y w menu
+--wyswietla wszystkie pozycje w menu, ktÃ³re kiedyokolwiek wystÂ¹piÂ³y w menu
 create view allMenu as
 
 select m.MenuPositionID,
@@ -190,5 +190,23 @@ join Customers C on C.CustomerID = O.CustomerID
 join Companies Co on Co.CustomerID = C.CustomerID
 
 group by O.OrderID, C.CustomerID, Co.CompanyName, O.OrderDate
+
+go
+
+--view 9
+--wyswietla informacje dot. dostawcow
+create view suppliersInfo
+as
+
+select distinct S.SupplierID, 
+	S.SupplierName,
+	C.CityName,
+	Cou.Country,
+	s.Email,
+	S.Phone
+from Suppliers S
+join Products P on P.SupplierID = S.SupplierID
+join City C on C.CityID = S.Location
+join Countries Cou on Cou.ID = C.CountryID
 
 go
