@@ -198,15 +198,18 @@ go
 create view suppliersInfo
 as
 
-select distinct S.SupplierID, 
+select S.SupplierID, 
 	S.SupplierName,
 	C.CityName,
 	Cou.Country,
 	s.Email,
-	S.Phone
+	S.Phone,
+	count(*) as [amountOfProductsShipped]
 from Suppliers S
 join Products P on P.SupplierID = S.SupplierID
 join City C on C.CityID = S.Location
 join Countries Cou on Cou.ID = C.CountryID
+
+group by S.SupplierID, S.SupplierName, C.CityName, Cou.Country, s.Email, s.Phone
 
 go
