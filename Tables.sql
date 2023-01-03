@@ -1,5 +1,5 @@
 Create Database Restaurant
-
+----------------------------------------------------
 go 
 create function dbo.CheckFunction	(
 	@var INT
@@ -11,7 +11,7 @@ as begin
   return 0
 end;
 
-
+-----------------------------------------------------
 Create Table Categories (
 	CategoryID int not null,
 	CategoryName nvarchar(256) not null, 
