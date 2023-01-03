@@ -117,7 +117,7 @@ Create Table CompanyReservations (
 )
 
 
-Create Table NumberOfTables (
+Create Table [Tables] (
 	TableID int not null, 
 	Quantity int not null,
 	Constraint PK_NumberOfTables Primary Key (TableID),
