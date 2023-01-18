@@ -11,7 +11,7 @@ CREATE trigger trCheckMenuPositions
    END
 GO
 
---procedure 1a
+--trigger 1a
 --wyrzuca pozycje w menu po dacie "OutDate"
 
 CREATE TRIGGER trMenuOutDate
