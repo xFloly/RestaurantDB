@@ -1,28 +1,28 @@
 Insert into Categories Values 
 	(1,'Przystawki'),
 	(2,'Zupy'),
-	(3,'Dania G≥Ûwne'),
+	(3,'Dania G≈Ç√≥wne'),
 	(4,'Desery'),
 	(5,'Dodatki'),
 	(6,'Napoje') 
 
 Insert into Dishes Values
-	(1,'Roladki z ≥ososia',1),
-	(2,'Tatar wo≥owy',1),
+	(1,'Roladki z ≈Çososia',1),
+	(2,'Tatar wo≈Çowy',1),
 	(3,'Grillowane Szparagi z serem',1),
 	(4,'Bruschetta z pomidorami',1),
 	(5,'Krem Serowy',2),
-	(6,'RosÛ≥ z makaronem',2),
+	(6,'Ros√≥≈Ç z makaronem',2),
 	(7,'Krem z Buraka',2),
 	(8,'Kurczak Grillowany',3),
-	(9,'Pierú z Kaczki',3),
-	(10,'Udziec JagniÍcy',3),
-	(11,'Policzki Wo≥owe',3),
-	(12,'Stek Wo≥owy',3),
+	(9,'Pier≈õ z Kaczki',3),
+	(10,'Udziec Jagniƒôcy',3),
+	(11,'Policzki Wo≈Çowe',3),
+	(12,'Stek Wo≈Çowy',3),
 	(13,'Sernik',4),
 	(14,'Fondant',4),
 	(15,'Ziemniaki',5),
-	(16,'Ryø',5),
+	(16,'Ry≈º',5),
 	(17,'Frytki',5),
 	(18,'Woda Mineralna',6),
 	(19,'Napoje Zimne(Pepsi,Mirinda,Sok Owowcowy)',6),
@@ -31,18 +31,18 @@ Insert into Dishes Values
 Insert into Person Values
 	(1,'Marek','Nowak','506-230-142'),
 	(2,'Marcin','Wilk','546-131-647'),
-	(3,'Kamil','ålimak','827-525-123'),
+	(3,'Kamil','≈ölimak','827-525-123'),
 	(4,'Jakub','Jajko','890-123-523'),
 	(5,'Franek','Brodacz','213-412-456'),
 	(6,'Karol','Skorpion','424-525-123'),
 	(7,'Filip','Uposiowski','505-524-521'),
 	(8,'Agnieszka','Twarzowska','312-424-121'),
 	(9,'Aleksandra','Ptak','942-231-421'),
-	(10,'Milena','Pyta≥a','312-567-321'),
+	(10,'Milena','Pyta≈Ça','312-567-321'),
 	(11,'Nikola','Ola','496-512-789')
 
 Insert into EmployeesCategory Values 
-	(1,'Menadøerowie'),
+	(1,'Menad≈ºerowie'),
 	(2,'Logistyka'),
 	(3,'Kelnerzy'),
 	(4,'Kuchnia')
@@ -105,11 +105,11 @@ Insert into City Values
 	(2,'Krakow',1),
 	(3,'Gdansk',1),
 	(4,'Poznan',1),
-	(5,'Wroc≥aw',1),
+	(5,'Wroc≈Çaw',1),
 	(6,'Berlin',2),
 	(7,'Monachium',2),
 	(8,'Drezno',2),
-	(9,'Paryø',3),
+	(9,'Pary≈º',3),
 	(10,'Lyon',3),
 	(11,'Praga',4)
 
@@ -134,26 +134,26 @@ Insert into Companies Values
 
 
 Insert into Person Values 
-	(12,'Eleonora','KamiÒska','728-492-193'),
+	(12,'Eleonora','Kami≈Ñska','728-492-193'),
 	(13,'Kornelia','Kwiatkowska','930-315-256'),
 	(14,'Alana ','Przybylska','502-212-136'),
-	(15,'Maria ','Ko≥odziej','252-526-241'),
+	(15,'Maria ','Ko≈Çodziej','252-526-241'),
 	(16,'Konstancja','Kowalczyk','512-123-663'),
 	(17,'Anita','Sawicka','124-485-552'),
 	(18,'Ewelina ','Krawczyk','555-555-555'),
 	(19,'Dagmara','Kowalska','777-532-177'),
-	(20,'JÛzefa ','Koz≥owska','245-515-234'),
-	(21,'Izabela ','GÛrska','788-522-777'),
+	(20,'J√≥zefa ','Koz≈Çowska','245-515-234'),
+	(21,'Izabela ','G√≥rska','788-522-777'),
 	(22,'Mariusz','Baran','505-525-325'),
-	(23,'Kazimierz','GÛrski','510-510-510'),
+	(23,'Kazimierz','G√≥rski','510-510-510'),
 	(24,'Ernest ','Baran','666-666-666'),
-	(25,'Miko≥aj  ','Ko≥odziej','692-137-420'),
-	(26,'Albert ','Cieúlak','252-241-500'),
+	(25,'Miko≈Çaj  ','Ko≈Çodziej','692-137-420'),
+	(26,'Albert ','Cie≈õlak','252-241-500'),
 	(27,'Robert ','Malinowski','680-636-324'),
 	(28,'Filip  ','Ostrowski','512-442-666'),
 	(29,'Kuba','Sawicki','213-525-666'),
-	(30,'Dominik','UrbaÒska','511-522-533'),
-	(31,'Kajetan','GÛrski','734-690-521')
+	(30,'Dominik','Urba≈Ñska','511-522-533'),
+	(31,'Kajetan','G√≥rski','734-690-521')
 
 Insert into IndividualCustomers Values	
 	(2,12),(3,13),(6,14),(9,15),(11,16),(12,17),
@@ -208,17 +208,17 @@ Insert into CompanyReservations Values
 	(36,1,10,'Marek','Kowal'), 
 	(4,4,8,'Leszek','Maniek'), 
 	(5,5,5,'Kamil','Wojciechowski'), 
-	(31,5,9,'Krzysztof','Kaümierczak'),
+	(31,5,9,'Krzysztof','Ka≈∫mierczak'),
 	(7,7,15,'Aleks','Wojciechowski'), 
 	(8,8,10,'Leszek ','Kwiatkowski'), 
 	(10,10,5,'Robert','Lis'), 
-	(14,14,4,'JÛzef','Marciniak'), 
-	(16,16,7,'Boles≥aw ','Czarnecki'), 
+	(14,14,4,'J√≥zef','Marciniak'), 
+	(16,16,7,'Boles≈Çaw ','Czarnecki'), 
 	(35,16,13,'Julian ','Zalewski'), 
 	(17,17,12,'Heronim','Baran'), 
-	(20,20,15,'Ignacy','Dπbrowski')
+	(20,20,15,'Ignacy','DƒÖbrowski')
 
-Insert into NumberOfTables Values
+Insert into [tables] Values
 	(1,4),(2,6),(3,6),(4,6),(5,2),(6,2),(7,2),(8,10),(9,4),(10,4)
 
 Insert into ReservationDetails Values
@@ -355,9 +355,9 @@ Insert into Suppliers Values
 	('CIAH','Cukiernia ciastko',5,'Ciacho@ponczek.com','345-888-788'),
 	('OK','Rzeznia Wroclaw',5,'Rzeznia@ok.com','755-421-525'),
 	('SAD','Sad W Polu',9,'SAD@DAS.com','842-666-666'),
-	('SZKL','Szklarnia w Elblπgu',10,'Szklarnia@Lyon.com','532-123-152'),
-	('KSZS','Browar u Krzycha',11,'Krzychu@Krzyú.com','523-422-525'),
-	('KARO','£owisko w Rypinie',1,'Skorpion@o.com','868-523-123'),
+	('SZKL','Szklarnia w ElblƒÖgu',10,'Szklarnia@Lyon.com','532-123-152'),
+	('KSZS','Browar u Krzycha',11,'Krzychu@Krzy≈õ.com','523-422-525'),
+	('KARO','≈Åowisko w Rypinie',1,'Skorpion@o.com','868-523-123'),
 	('POLE','Ziemniaki z Pola',4,'Nap@Ziemnior.com','996-234-535')
 
 Insert Into ProductsCategory Values
@@ -368,22 +368,22 @@ Insert Into ProductsCategory Values
 	(5,'Pieczywo')
 
 Insert into Products Values
-	(1,'Wo≥owina',1,'OK',18,1),
+	(1,'Wo≈Çowina',1,'OK',18,1),
 	(2,'Kurczak',1,'OK',12,1),
-	(3,'JagniÍcina',1,'MARC',15,1),
+	(3,'Jagniƒôcina',1,'MARC',15,1),
 	(4,'Kaczka',1,'MARC',15,1),
-	(5,'Stek Wo≥owy',1,'OK',25,1),
-	(6,'Napoje s≥odkie',2,'BIED',5,3),
+	(5,'Stek Wo≈Çowy',1,'OK',25,1),
+	(6,'Napoje s≈Çodkie',2,'BIED',5,3),
 	(7,'Woda Mineralna',2,'LIDL',2,3),
 	(8,'Piwo Lane',2,'KSZS',4,3),
-	(9,'£osoú',1,'KARO',16,11),
+	(9,'≈Åoso≈õ',1,'KARO',16,11),
 	(10,'Ciasta',4,'CIAH',8,11),
 	(11,'Ziemniaki',3,'POLE',3,11),
 	(12,'Ryz',4,'SZKL',2,11),
-	(13,'Bu≥ki',5,'WJTK',1,11),
+	(13,'Bu≈Çki',5,'WJTK',1,11),
 	(14,'Bruschetta',5,'WJTK',2,11),
 	(15,'Szparagi',3,'SAD',2,1),
-	(16,'åliwki',3,'SAD',5,1),
+	(16,'≈öliwki',3,'SAD',5,1),
 	(17,'Maka',4,'BIED',2,1),
 	(18,'Jajka',4,'POLE',1,3),
 	(19,'Kostka Rosolowa',4,'BIED',1,3),
