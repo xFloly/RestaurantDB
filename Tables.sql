@@ -120,7 +120,7 @@ Create Table CompanyReservations (
 Create Table [Tables] (
 	TableID int not null, 
 	Quantity int not null,
-	Constraint PK_NumberOfTables Primary Key (TableID),
+	Constraint PK_Tables Primary Key (TableID),
 	Constraint CK_Quantity2 Check (Quantity > 0)
 )
 
@@ -129,7 +129,7 @@ Create Table ReservationDetails (
 	TableID int not null,
 	Constraint PK_ReservationDetails Primary Key (ReservationID, TableID),
 	Constraint FK_ReservationID_TO_Reservations3 Foreign Key (ReservationID) references Reservations(ReservationID),
-	Constraint FK_TableID_TO_NumberOfTables2 Foreign Key (TableID) references NumberOfTables(TableID)
+	Constraint FK_TableID_TO_Tables2 Foreign Key (TableID) references Tables(TableID)
 )
 
 Create Table TableReservations (
@@ -138,7 +138,7 @@ Create Table TableReservations (
 	TableReservationStart datetime not null,
 	TableReservationEnd datetime not null, 
 	Constraint PK_TableReservations Primary Key (TableReservationID),
-	Constraint FK_TableID_TO_NumberOfTables3 Foreign Key (TableID) references NumberOfTables(TableID),
+	Constraint FK_TableID_TO_Tables3 Foreign Key (TableID) references Tables(TableID),
 	Constraint CK_TableReservationEnd Check (TableReservationEnd > TableReservationStart AND 
 	datepart(year,TableReservationEnd) = datepart(year, TableReservationStart) AND
     datepart(month, TableReservationEnd) = datepart(month, TableReservationStart) AND 
