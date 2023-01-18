@@ -1,5 +1,5 @@
 Create Database Restaurant
-
+----------------------------------------------------
 go 
 create function dbo.CheckFunction	(
 	@var INT
@@ -11,7 +11,7 @@ as begin
   return 0
 end;
 
-
+-----------------------------------------------------
 Create Table Categories (
 	CategoryID int not null,
 	CategoryName nvarchar(256) not null, 
@@ -20,10 +20,10 @@ Create Table Categories (
 )
 
 Create table Dishes (
-	ID int not null,
+	DishID int not null,
 	Name nvarchar(256) not null,
 	CategoryID int not null,
-	constraint PK_Dishes Primary Key (ID),
+	constraint PK_Dishes Primary Key (DishID),
 	constraint FK_CategoryID_TO_Categories foreign Key (CategoryID) references Categories(CategoryID),
 	constraint UQ_Name unique (Name)
 )
@@ -35,15 +35,15 @@ create table Menu (
 	InDate datetime not null,
 	OutDate datetime null,
 	constraint PK_Menu Primary Key (MenuPositionID),
-	constraint FK_DishID_TO_Dishes foreign key (DishID) references Dishes(ID),
+	constraint FK_DishID_TO_Dishes foreign key (DishID) references Dishes(DishID),
 	constraint CK_OutDate check (OutDate is not null or OutDate > InDate),
 	constraint CK_DishPrice check (DishPrice > 0)
 )
 
 Create Table Countries (
-	ID int not null,
+	CountryID int not null,
 	Country nvarchar(256) not null,
-	constraint PK_Countries Primary Key (ID),
+	constraint PK_Countries Primary Key (CountryID),
 	constraint UQ_Countries unique (Country)
 )
 
@@ -53,7 +53,7 @@ Create Table City (
 	CountryID int not null,
 	constraint PK_City Primary Key (CityID),
 	constraint UQ_CityName unique (CityName),
-	constraint FK_CountryID_TO_Countries Foreign Key (CountryID) references Countries(ID)
+	constraint FK_CountryID_TO_Countries Foreign Key (CountryID) references Countries(CountryID)
 )
 
 Create Table Customers (
@@ -75,11 +75,11 @@ Create table Companies (
 )
 
 Create Table Person (
-	ID int not null,
+	PerosnID int not null,
 	FirstName nvarchar(256) not null,
 	LastName nvarchar(256) not null, 
 	Phone nvarchar(256) not null,
-	Constraint PK_Person Primary Key (ID),
+	Constraint PK_Person Primary Key (PerosnID),
 	Constraint CK_Phone Check (Phone like '[1-9][0-9][0-9]-[0-9][0-9][0-9]-[0-9][0-9][0-9]')
 )
 
@@ -87,7 +87,7 @@ Create Table IndividualCustomers (
 	CustomerID int not null,
 	PersonID int not null,
 	Constraint PK_IndividualCustomers Primary Key (CustomerID),
-	Constraint FK_PersonID_TO_Person Foreign Key (PersonID) references Person(ID),
+	Constraint FK_PersonID_TO_Person Foreign Key (PersonID) references Person(PerosnID),
 	Constraint FK_CustomerID_TO_Customers Foreign Key (CustomerID) references Customers(CustomerID)
 )
 
@@ -97,7 +97,6 @@ Create Table Reservations (
 	StartDate datetime not null,
 	EndDate datetime not null,
 	ReservationDate datetime not null,
-	ReservationStatus int not null
 	Constraint PK_Reservations Primary Key (ReservationID),
 	Constraint FK_CustomerID_TO_Customers3 Foreign Key (CustomerID) references Customers(CustomerID),
 	Constraint CK_StartDate check (StartDate >= ReservationDate),
@@ -118,10 +117,10 @@ Create Table CompanyReservations (
 )
 
 
-Create Table NumberOfTables (
+Create Table [Tables] (
 	TableID int not null, 
 	Quantity int not null,
-	Constraint PK_NumberOfTables Primary Key (TableID),
+	Constraint PK_Tables Primary Key (TableID),
 	Constraint CK_Quantity2 Check (Quantity > 0)
 )
 
@@ -130,7 +129,7 @@ Create Table ReservationDetails (
 	TableID int not null,
 	Constraint PK_ReservationDetails Primary Key (ReservationID, TableID),
 	Constraint FK_ReservationID_TO_Reservations3 Foreign Key (ReservationID) references Reservations(ReservationID),
-	Constraint FK_TableID_TO_NumberOfTables2 Foreign Key (TableID) references NumberOfTables(TableID)
+	Constraint FK_TableID_TO_Tables2 Foreign Key (TableID) references Tables(TableID)
 )
 
 Create Table TableReservations (
@@ -139,7 +138,7 @@ Create Table TableReservations (
 	TableReservationStart datetime not null,
 	TableReservationEnd datetime not null, 
 	Constraint PK_TableReservations Primary Key (TableReservationID),
-	Constraint FK_TableID_TO_NumberOfTables3 Foreign Key (TableID) references NumberOfTables(TableID),
+	Constraint FK_TableID_TO_Tables3 Foreign Key (TableID) references Tables(TableID),
 	Constraint CK_TableReservationEnd Check (TableReservationEnd > TableReservationStart AND 
 	datepart(year,TableReservationEnd) = datepart(year, TableReservationStart) AND
     datepart(month, TableReservationEnd) = datepart(month, TableReservationStart) AND 
@@ -150,28 +149,28 @@ Create Table Discount (
 	DiscountID int not null,
 	CustomerID int not null,
 	ValidFrom datetime not null, 
-	ValidTo datetime not null,
+	ValidTo datetime null,
 	DiscountValue real not null,
 	Constraint PK_Discount Primary Key (DiscountID),
 	Constraint FK_CustomerID_TO_Customers6 Foreign Key (CustomerID) references Customers(CustomerID),
-	Constraint CK_ValidTo Check (ValidFrom < ValidTo),
+	Constraint CK_ValidTo Check (ValidFrom < ValidTo OR ValidFrom is null),
 	Constraint CK_DiscountValue Check (DiscountValue > 0 AND DiscountValue < 1)
 )
 
 Create Table EmployeesCategory (
 	CategoryID int not null,
-	CategoryName int not null,
+	CategoryName nvarchar(256) not null,
 	Constraint PK_EmployeesCategory Primary Key (CategoryID),
 	Constraint UQ_CategoryName Unique (CategoryName)
 )
 
  Create Table Employees (
 	EmployeeID int not null,
-	PersonID int not null,
+	PersonID int not null, 
 	CategoryID int not null,
 	ReportsTo int null,
 	Constraint PK_Employees Primary Key (EmployeeID),
-	Constraint FK_PersonID_TO_Person2 foreign Key (PersonID) references Person(ID),
+	Constraint FK_PersonID_TO_Person2 foreign Key (PersonID) references Person(PerosnID),
 	Constraint FK_ReportsTo_TO_Employees foreign Key (ReportsTo) references Employees(EmployeeID),
 	Constraint CK_ReportsTO Check (ReportsTO <> EmployeeID OR ReportsTo is null),
 	Constraint FK_CategoryID_TO_EmployeesCategory foreign Key (CategoryID) references EmployeesCategory(CategoryID)
@@ -183,13 +182,11 @@ create table Orders	(
 	EmployeeID int not null,
 	CustomerID int not null,
 	OrderDate datetime not null,
-	OutDate datetime null,
-	PaidDate datetime null,
+	PaidDate datetime not null,
 	Constraint PK_Orders Primary Key (OrderID),
 	Constraint FK_EmployeeID_TO_Employees Foreign Key (EmployeeID) references Employees(EmployeeID),
 	Constraint FK_CustomerID_TO_Customers7 Foreign Key (CustomerID) references Customers(CustomerID),
-	Constraint CK_OutDate2 Check (OutDate is null OR OutDate > OrderDate),
-	Constraint CK_PaidDate Check (PaidDate is null OR PaidDate > OutDate),
+	Constraint CK_OutDate2 check (PaidDate > OrderDate),
 	Constraint CK_EmployeeCategory Check (dbo.CheckFunction(3) = 1)
 )
 
@@ -204,7 +201,7 @@ Create Table IndividualReservations (
 	Constraint FK_CustomerID_TO_Customers5 Foreign Key (CustomerID) references Customers(CustomerID),
 	Constraint CK_NumberOfPeople2 Check (NumberOfPeople > 0),
 	Constraint FK_OrderID_TO_Orders2 Foreign Key (OrderID) references Orders(OrderID),
-	Constraint FK_TableID_TO_NumberOfTables Foreign Key (TableID) references NumberOfTables(TableID)
+	Constraint FK_TableID_TO_Tables Foreign Key (TableID) references Tables(TableID)
 )
 
 
@@ -221,11 +218,11 @@ Create Table OrderDetails (
 )
 
 Create table Administrators (
-	ID int not null,
+	AdminID int not null,
 	FirstName nvarchar(256) not null,
 	LastName nvarchar(256) not null,
 	Email nvarchar(256) not null,
-	Constraint PK_Administrators Primary Key (ID),
+	Constraint PK_Administrators Primary Key (AdminID),
 	Constraint CK_Email Check (Email like '%@%')
 )
 
@@ -264,4 +261,3 @@ Create Table Products (
 	Constraint FK_EmployeeID_from_Employees2 Foreign Key (EmployeeID) references Employees(EmployeeID),
 	Constraint CK_EmployeeID Check (dbo.CheckFunction(2) = 1) 
 )
-
