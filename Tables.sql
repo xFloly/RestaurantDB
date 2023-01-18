@@ -1,5 +1,5 @@
 Create Database Restaurant
-----------------------------------------------------
+
 go 
 create function dbo.CheckFunction	(
 	@var INT
@@ -11,7 +11,7 @@ as begin
   return 0
 end;
 
------------------------------------------------------
+
 Create Table Categories (
 	CategoryID int not null,
 	CategoryName nvarchar(256) not null, 
@@ -97,6 +97,7 @@ Create Table Reservations (
 	StartDate datetime not null,
 	EndDate datetime not null,
 	ReservationDate datetime not null,
+	ReservationStatus int not null
 	Constraint PK_Reservations Primary Key (ReservationID),
 	Constraint FK_CustomerID_TO_Customers3 Foreign Key (CustomerID) references Customers(CustomerID),
 	Constraint CK_StartDate check (StartDate >= ReservationDate),
@@ -117,10 +118,10 @@ Create Table CompanyReservations (
 )
 
 
-Create Table [Tables] (
+Create Table NumberOfTables (
 	TableID int not null, 
 	Quantity int not null,
-	Constraint PK_Tables Primary Key (TableID),
+	Constraint PK_NumberOfTables Primary Key (TableID),
 	Constraint CK_Quantity2 Check (Quantity > 0)
 )
 
@@ -129,7 +130,7 @@ Create Table ReservationDetails (
 	TableID int not null,
 	Constraint PK_ReservationDetails Primary Key (ReservationID, TableID),
 	Constraint FK_ReservationID_TO_Reservations3 Foreign Key (ReservationID) references Reservations(ReservationID),
-	Constraint FK_TableID_TO_Tables2 Foreign Key (TableID) references Tables(TableID)
+	Constraint FK_TableID_TO_NumberOfTables2 Foreign Key (TableID) references NumberOfTables(TableID)
 )
 
 Create Table TableReservations (
@@ -138,7 +139,7 @@ Create Table TableReservations (
 	TableReservationStart datetime not null,
 	TableReservationEnd datetime not null, 
 	Constraint PK_TableReservations Primary Key (TableReservationID),
-	Constraint FK_TableID_TO_Tables3 Foreign Key (TableID) references Tables(TableID),
+	Constraint FK_TableID_TO_NumberOfTables3 Foreign Key (TableID) references NumberOfTables(TableID),
 	Constraint CK_TableReservationEnd Check (TableReservationEnd > TableReservationStart AND 
 	datepart(year,TableReservationEnd) = datepart(year, TableReservationStart) AND
     datepart(month, TableReservationEnd) = datepart(month, TableReservationStart) AND 
@@ -149,24 +150,24 @@ Create Table Discount (
 	DiscountID int not null,
 	CustomerID int not null,
 	ValidFrom datetime not null, 
-	ValidTo datetime null,
+	ValidTo datetime not null,
 	DiscountValue real not null,
 	Constraint PK_Discount Primary Key (DiscountID),
 	Constraint FK_CustomerID_TO_Customers6 Foreign Key (CustomerID) references Customers(CustomerID),
-	Constraint CK_ValidTo Check (ValidFrom < ValidTo OR ValidFrom is null),
+	Constraint CK_ValidTo Check (ValidFrom < ValidTo),
 	Constraint CK_DiscountValue Check (DiscountValue > 0 AND DiscountValue < 1)
 )
 
 Create Table EmployeesCategory (
 	CategoryID int not null,
-	CategoryName nvarchar(256) not null,
+	CategoryName int not null,
 	Constraint PK_EmployeesCategory Primary Key (CategoryID),
 	Constraint UQ_CategoryName Unique (CategoryName)
 )
 
  Create Table Employees (
 	EmployeeID int not null,
-	PersonID int not null, 
+	PersonID int not null,
 	CategoryID int not null,
 	ReportsTo int null,
 	Constraint PK_Employees Primary Key (EmployeeID),
@@ -182,11 +183,13 @@ create table Orders	(
 	EmployeeID int not null,
 	CustomerID int not null,
 	OrderDate datetime not null,
-	PaidDate datetime not null,
+	OutDate datetime null,
+	PaidDate datetime null,
 	Constraint PK_Orders Primary Key (OrderID),
 	Constraint FK_EmployeeID_TO_Employees Foreign Key (EmployeeID) references Employees(EmployeeID),
 	Constraint FK_CustomerID_TO_Customers7 Foreign Key (CustomerID) references Customers(CustomerID),
-	Constraint CK_OutDate2 check (PaidDate > OrderDate),
+	Constraint CK_OutDate2 Check (OutDate is null OR OutDate > OrderDate),
+	Constraint CK_PaidDate Check (PaidDate is null OR PaidDate > OutDate),
 	Constraint CK_EmployeeCategory Check (dbo.CheckFunction(3) = 1)
 )
 
@@ -201,7 +204,7 @@ Create Table IndividualReservations (
 	Constraint FK_CustomerID_TO_Customers5 Foreign Key (CustomerID) references Customers(CustomerID),
 	Constraint CK_NumberOfPeople2 Check (NumberOfPeople > 0),
 	Constraint FK_OrderID_TO_Orders2 Foreign Key (OrderID) references Orders(OrderID),
-	Constraint FK_TableID_TO_Tables Foreign Key (TableID) references Tables(TableID)
+	Constraint FK_TableID_TO_NumberOfTables Foreign Key (TableID) references NumberOfTables(TableID)
 )
 
 
@@ -261,3 +264,4 @@ Create Table Products (
 	Constraint FK_EmployeeID_from_Employees2 Foreign Key (EmployeeID) references Employees(EmployeeID),
 	Constraint CK_EmployeeID Check (dbo.CheckFunction(2) = 1) 
 )
+
