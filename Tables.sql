@@ -201,7 +201,7 @@ Create Table IndividualReservations (
 	Constraint FK_CustomerID_TO_Customers5 Foreign Key (CustomerID) references Customers(CustomerID),
 	Constraint CK_NumberOfPeople2 Check (NumberOfPeople > 0),
 	Constraint FK_OrderID_TO_Orders2 Foreign Key (OrderID) references Orders(OrderID),
-	Constraint FK_TableID_TO_NumberOfTables Foreign Key (TableID) references NumberOfTables(TableID)
+	Constraint FK_TableID_TO_Tables Foreign Key (TableID) references Tables(TableID)
 )
 
 
