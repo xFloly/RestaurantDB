@@ -1,3 +1,2 @@
 # RestaurantDB
-epic poggers
-UPO UPO
+Projekt Bazy Danych Restauracji - UJ 2k23
