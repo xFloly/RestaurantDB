@@ -1,52 +1,63 @@
 --VIEW 1
---wyswietla wszystkie pozycje w menu, które kiedyokolwiek wyst¹pi³y w menu
-create view allMenu as
+--wyswietla wszystkie pozycje w menu, które kiedyokolwiek wystąpiły w menu
 
-select m.MenuPositionID,
-		m.DishID,
-		D.Name,
-		m.DishPrice,
-		m.InDate,
-		m.OutDate
-from Menu as m
-inner join dishes d on d.Id= m.DishID
+create view allMenu
+as
+
+select 	M.MenuPositionID,
+	M.DishID,
+	D.Name,
+	M.DishPrice,
+	M.InDate,
+	M.OutDate
+from Menu as M
+inner join Dishes D on D.DishID= M.DishID
 
 go
 
 --VIEW 2
---ilosc zamowien na kazdy produkt tego dnia
+--ilosc zamowien na każdy produkt
+
 create view QuantityOfOrderedDishes
 as
 
-select D.Name,
-		(select count(*)
+select 	D.Name,
+	(select  COUNT(*)
 		from Dishes D1
 		inner join Menu M
-		on d1.ID = m.DishID
+		on D1.DishID = M.DishID
 		inner join OrderDetails OD on
-		M.MenuPositionID = Od.MenuPosID
-		where D.Id = d1.ID) as DishQuantitiy
+		M.MenuPositionID = OD.MenuPosID
+		where D.DishId = D1.DishID) as DishQuantitiy
 from Dishes D
 
 go
 
+
+
 --VIEW 3
---wypisuje aktualne menu
+--wypisuje w przejrzysty sposób aktualne menu
+-- ID, nazwwe, cene i kategorie
+
 create view CurrentMenu as
 
-select M.DishID,
-		D.Name,
-		M.DishPrice,
-		C.CategoryName
+select 	M.DishID,
+	D.Name,
+	M.DishPrice,
+	C.CategoryName
 from Menu as M
-inner join Dishes D on D.ID = M.DishID
+inner join Dishes D on D.dISHID = M.DishID
 inner join Categories C on C.CategoryID = D.CategoryID
 where M.OutDate is null or M.OutDate > getdate()
 
 go
 
+
+
 --VIEW 4
 --pokazuje wszystkie dotychczasz zlozone rezerwacje
+--z rozróżnieniem czy rezerwwacja została wykonana przez firme czy indywidualna jednostke
+
 create view allReservations as
 select R.ReservationID,
 	R.CustomerID,
@@ -74,6 +85,7 @@ go
 
 --VIEW 5
 --statystyki zwiazane z rezerwacja danych stolikow
+
 create view allTableStats
 as
 
@@ -81,20 +93,21 @@ select T.TableID,
 	T.Quantity,
 	(select count(1)
 	from TableReservations TR
-	where T.TableID = TR.TableID) as Used
+	where T.TableID = TR.TableID) as [Times Used]
 from Tables T
-group by t.TableID, T.Quantity
+group by T.TableID, T.Quantity
 
 go
 
 --view 6
 --suma zamowien
+
 create view CustomersOrderSum 
 as
 
-select C.CustomerID,
-		O.OrderID,
-		ROUND(SUM(M.DishPrice * OD.Quantity), 2) as [Sum] 
+select 	C.CustomerID,
+	O.OrderID,
+	ROUND(SUM(M.DishPrice * OD.Quantity), 2) as [Sum] 
 from Customers C
 join IndividualCustomers IC on C.CustomerID = IC.CustomerID
 join Person P on P.ID = IC.PersonID
@@ -105,9 +118,9 @@ group by c.CustomerID, o.OrderID
 
 union
 
-select C.CustomerID,
-		O.OrderID,
-		ROUND(SUM(M.DishPrice * OD.Quantity), 2) as [Sum]
+select 	C.CustomerID,
+	O.OrderID,
+	ROUND(SUM(M.DishPrice * OD.Quantity), 2) as [Sum]
 from Customers C
 join Companies Co on C.CustomerID = Co.CustomerID
 join Orders O on C.CustomerID = O.CustomerID
