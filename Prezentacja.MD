@@ -1,10 +1,10 @@
-#Projek baz danych restauracji
+# Projek baz danych restauracji
 
-##Założenia projektu
+## Założenia projektu
 
 Celem projektu jest stworzenie serwisu obsługi restauracji, zarówno  
 
-##Schemat pielęgnacji bazy danych
+## Schemat pielęgnacji bazy danych
 
 Pielęgnacja bazy danych restauracji powinna obejmować następujące kroki:
 
