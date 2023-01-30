@@ -1,9 +1,5 @@
 # Projek baz danych restauracji
 
-## Założenia projektu
-
-Celem projektu jest stworzenie serwisu obsługi restauracji, zarówno  
-
 ## Schemat pielęgnacji bazy danych
 
 Pielęgnacja bazy danych restauracji powinna obejmować następujące kroki:
@@ -12,6 +8,11 @@ Regularne backupowanie bazy danych: Aby uniknąć utraty danych w przypadku awar
 
 Czyszczenie i archiwizacja danych: Regularnie należy czyścić bazę danych, usuwając niepotrzebne dane, takie jak stare rezerwacje lub zamówienia. Dane, które nie są już potrzebne, powinny być archiwizowane, aby nie zajmowały miejsca na serwerze.
 
-Testowanie i audytowanie: Przeprowadzanie regularnych testów i audytów bazy danych pozwala na wykrycie i naprawienie błędów i niedoskonałości.
+## Diagram Bazy
 
-Zapewnienie dostępności i bezpieczeństwa danych: Dostęp do bazy danych powinien być ograniczony do upoważnionych osób, a dane powinny być chronione przed nieautoryzowanym dostępem.
+[diagram (1).pdf](https://github.com/xFloly/RestaurantDB/files/10540994/diagram.1.pdf)
+
+## Tabele
+
+![Tabelki1](https://user-images.githubusercontent.com/101994826/215623823-5bc9791e-b6fd-48d3-b2db-a4420b264c40.png)
+![Tabelki2](https://user-images.githubusercontent.com/101994826/215623833-4dd1a044-8ff2-4c19-a003-f556e127bcf4.png)
