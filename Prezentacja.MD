@@ -175,7 +175,7 @@ go
 
 **udfGetBestSellingDishes**:
 
-zwraca top 'x' najlepiej sprzedajacych sie dan
+zwraca top `x` najlepiej sprzedajacych sie dan
 ```
 create function udfGetBestSellingDishes(@x int)
 
