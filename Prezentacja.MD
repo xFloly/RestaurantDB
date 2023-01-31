@@ -25,9 +25,13 @@ Będzie umożliwiać efektywne wykorzystywanie informacji w celu poprawy działa
 
 Pielęgnacja bazy danych restauracji powinna obejmować następujące kroki:
 
-**Regularne backupowanie bazy danych**: Aby uniknąć utraty danych w przypadku awarii systemu lub innych problemów technicznych, należy regularnie tworzyć kopie zapasowe bazy danych i przechowywać je na bezpiecznym dysku lub w chmurze.
+**Regularne backupowanie bazy danych**:
 
-**Czyszczenie i archiwizacja danych**: Regularnie należy czyścić bazę danych, usuwając niepotrzebne dane, takie jak stare rezerwacje lub zamówienia. Dane, które nie są już potrzebne, powinny być archiwizowane, aby nie zajmowały miejsca na serwerze.
+Aby uniknąć utraty danych w przypadku awarii systemu lub innych problemów technicznych, należy regularnie tworzyć kopie zapasowe bazy danych i przechowywać je na bezpiecznym dysku lub w chmurze.
+
+**Czyszczenie i archiwizacja danych**:
+
+Regularnie należy czyścić bazę danych, usuwając niepotrzebne dane, takie jak stare rezerwacje lub zamówienia. Dane, które nie są już potrzebne, powinny być archiwizowane, aby nie zajmowały miejsca na serwerze.
 
 ## Diagram Relacji
 
