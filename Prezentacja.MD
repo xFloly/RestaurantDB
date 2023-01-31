@@ -46,7 +46,7 @@ create unique index Orders_pk
 on Orders(OrderID)
 go
 ```
-**Customers_pk**: ustawienie indeksu na CustomerID ww Customers
+**Customers_pk**: ustawienie indeksu na CustomerID w Customers
 ```
 create unique index Customers_pk
 on Customers(CustomerID)
