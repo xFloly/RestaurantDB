@@ -36,7 +36,7 @@ create table Menu (
 	OutDate datetime null,
 	constraint PK_Menu Primary Key (MenuPositionID),
 	constraint FK_DishID_TO_Dishes foreign key (DishID) references Dishes(DishID),
-	constraint CK_OutDate check (OutDate is not null or OutDate > InDate),
+	constraint CK_OutDate check (OutDate is null or OutDate > InDate),
 	constraint CK_DishPrice check (DishPrice > 0)
 )
 
