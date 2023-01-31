@@ -35,7 +35,7 @@ Regularnie należy czyścić bazę danych, usuwając niepotrzebne dane, takie ja
 
 ## Diagram Relacji
 
-![image](https://user-images.githubusercontent.com/101994826/215746970-73e348e5-ff38-4f4f-9c9b-a340b634e76e.png)
+![image](https://user-images.githubusercontent.com/101994826/215753680-2b6b21ee-ac8b-43ed-9075-1b36d354a0a0.png)
 
 
 ## Tabele
