@@ -170,7 +170,161 @@ join CompanyReservations CR
 on R.ReservationID = CR.ReservationID
 go
 ```
+**allTableStats**:
 
+statystyki zwiazane z rezerwacja danych stolikow
+```
+create view allTableStats
+as
+
+select T.TableID,
+	T.Quantity,
+	(select count(1)
+	from TableReservations TR
+	where T.TableID = TR.TableID) as [Times Used]
+from Tables T
+group by T.TableID, T.Quantity
+
+go
+```
+
+**CustomersOrderSum**:
+
+suma zamowien każdego klienta
+```
+create view CustomersOrderSum 
+as
+
+select 	C.CustomerID,
+	O.OrderID,
+	ROUND(SUM(M.DishPrice * OD.Quantity), 2) as [Sum] 
+from Customers C
+join IndividualCustomers IC on C.CustomerID = IC.CustomerID
+join Person P on P.PerosnID = IC.PersonID
+join Orders O on C.CustomerID = O.CustomerID
+join OrderDetails OD on OD.OrderID = O.OrderID
+join Menu M on M.MenuPositionID = OD.MenuPosID
+group by c.CustomerID, o.OrderID
+
+union
+
+select 	C.CustomerID,
+	O.OrderID,
+	ROUND(SUM(M.DishPrice * OD.Quantity), 2) as [Sum]
+from Customers C
+join Companies Co on C.CustomerID = Co.CustomerID
+join Orders O on C.CustomerID = O.CustomerID
+join OrderDetails OD on OD.OrderID = O.OrderID
+join Menu M on M.MenuPositionID = OD.MenuPosID
+group by c.CustomerID, o.OrderID
+
+go
+```
+**CustomersOrders**:
+
+wartosc zamowien z nazwa, cena, czy jest to klient indywidualny czy firma oraz data zamowienia
+```
+create view CustomersOrders
+as
+
+select O.OrderID,
+C.CustomerID,
+P.LastName + ' ' + P.FirstName as [Name],
+ROUND(SUM(M.DishPrice * Od.Quantity * (1 - ISNULL(dbo.udfGetDiscount(O.OrderID, C.CustomerID), 0))),2) as [Order Price],
+O.OrderDate,
+'Person' as [Type],
+YEAR(O.OrderDate) as [Year],
+MONTH(O.OrderDate) as [Month]
+from Orders O
+join OrderDetails OD on OD.OrderID = o.OrderID
+join Menu M on M.MenuPositionID = OD.MenuPosID
+join Customers C on C.CustomerID = O.CustomerID
+join IndividualCustomers IC on C.CustomerID = IC.CustomerID
+join Person P on P.PerosnID = IC.PersonID
+
+group by O.OrderID, C.CustomerID, P.LastName + ' ' + P.FirstName, O.OrderDate
+
+union 
+
+select O.OrderID,
+C.CustomerID,
+Co.CompanyName as [Name],
+ROUND(SUM(M.DishPrice * Od.Quantity * (1 - ISNULL(dbo.udfGetDiscount(O.OrderID, C.CustomerID), 0))),2) as [Order Price],
+O.OrderDate,
+'Company' as [Type],
+YEAR(O.OrderDate) as [Year],
+MONTH(O.OrderDate) as [Month]
+from Orders O
+join OrderDetails OD on OD.OrderID = o.OrderID
+join Menu M on M.MenuPositionID = OD.MenuPosID
+join Customers C on C.CustomerID = O.CustomerID
+join Companies Co on Co.CustomerID = C.CustomerID
+
+group by O.OrderID, C.CustomerID, Co.CompanyName, O.OrderDate
+
+go
+```
+
+**amountOfOrders**:
+
+ilosc zamowien wykonanych przez klienta z rozroznieniem czy jest to firma czy indywidualna jednostka
+```
+create view amountOfOrders
+as
+
+select  C.CustomerID,
+P.LastName + ' ' + P.FirstName as [Name],
+count(O.OrderID) as Amount,
+'Person' as [Type]
+from Orders O
+join OrderDetails OD on OD.OrderID = o.OrderID
+join Menu M on M.MenuPositionID = OD.MenuPosID
+join Customers C on C.CustomerID = O.CustomerID
+join IndividualCustomers IC on C.CustomerID = IC.CustomerID
+join Person P on P.PerosnID = IC.PersonID
+
+group by O.OrderID, C.CustomerID, P.LastName + ' ' + P.FirstName, O.OrderDate
+
+union 
+
+select C.CustomerID,
+Co.CompanyName as [Name],
+count(O.OrderID) as Amount,
+'Company' as [Type]
+from Orders O
+join OrderDetails OD on OD.OrderID = o.OrderID
+join Menu M on M.MenuPositionID = OD.MenuPosID
+join Customers C on C.CustomerID = O.CustomerID
+join Companies Co on Co.CustomerID = C.CustomerID
+
+group by O.OrderID, C.CustomerID, Co.CompanyName, O.OrderDate
+
+go
+```
+
+**suppliersInfo**:
+
+wyswietla informacje dotyczące dostawców
+```
+create view suppliersInfo
+as
+
+select S.SupplierID, 
+	S.SupplierName,
+	C.CityName,
+	Cou.Country,
+	s.Email,
+	S.Phone,
+	count(*) as [amountOfProductsShipped]
+from Suppliers S
+join Products P on P.SupplierID = S.SupplierID
+join City C on C.CityID = S.Location
+join Countries Cou on Cou.CountryID = C.CountryID
+
+group by S.SupplierID, S.SupplierName, C.CityName, Cou.Country, s.Email, s.Phone
+
+go
+```
 # Funkcje
 
 **udfGetBestSellingDishes**:
