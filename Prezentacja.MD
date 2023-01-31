@@ -14,6 +14,7 @@ Czyszczenie i archiwizacja danych: Regularnie należy czyścić bazę danych, us
 
 ## Diagram Relacji
 
+![image](https://user-images.githubusercontent.com/101994826/215746970-73e348e5-ff38-4f4f-9c9b-a340b634e76e.png)
 
 
 ## Tabele
