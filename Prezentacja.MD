@@ -175,7 +175,7 @@ go
 
 **udfGetBestSellingDishes**:
 
-zwraca top x najlepiej sprzedajacych sie dan
+zwraca top 'x' najlepiej sprzedajacych sie dan
 ```
 create function udfGetBestSellingDishes(@x int)
 
@@ -206,7 +206,7 @@ go
 ```
 **udfGetOrderPrice**:
 
-zwraca wartosc zamowienia
+zwraca wartosc zamowienia przekazanego parametrem
 ```
 CREATE FUNCTION udfGetOrderPrice(@order_id int)
 returns float as
@@ -222,7 +222,7 @@ go
 ```
 **udfGetMenuPositionsBetween**:
 
-zwraca pozycje z menu znajdujace sie miedzy okreslonymi wartosciami
+zwraca pozycje z menu znajdujace sie miedzy wartosciami przekazanymi w parametrach
 ```
 CREATE FUNCTION udfGetMenuPositionsBetween(@x int, @y int)
 returns table as
@@ -366,8 +366,8 @@ go
 
 **uspInsertOrderDetailsToOrder**:
 
---Dodaje szczegóły dotyczące zamówenia o ID “OrderID” tzn. 
---jakie danie oraz w jakiej ilości zamówiono
+Dodaje szczegóły dotyczące zamówenia o ID “OrderID” tzn. 
+jakie danie oraz w jakiej ilości zamówiono
 ```
 CREATE PROCEDURE uspInsertOrderDetailsToOrder @OrderID int,
                                              @MenuPositionID int,
