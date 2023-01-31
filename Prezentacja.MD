@@ -2,17 +2,19 @@
 
 ## Założenia
 
-Cel projektu:
+**Cel projektu:**
 
 Stworzenie bazy danych restauracji, aby umożliwić łatwe i szybkie zarządzanie informacjami o menu, klientach, rezerwacjach i transakcjach.
-Możliwości:
+
+**Możliwości:**
 
 Przechowywanie informacji o menu, cenach i dostępności potraw
 Rejestrowanie i przeglądanie informacji o klientach i ich rezerwacjach
 Śledzenie transakcji i obliczanie wyniku finansowego restauracji
 Generowanie raportów i analiz dotyczących sprzedaży i popularności poszczególnych potraw
 Umożliwienie wygodnego wyszukiwania i sortowania informacji w bazie danych
-Główne załozenia:
+
+**Główne załozenia**:
 
 Baza danych będzie prosta i łatwa w użyciu dla personelu restauracji
 Będzie zabezpieczona i chroniona przed nieautoryzowanym dostępem
@@ -23,9 +25,9 @@ Będzie umożliwiać efektywne wykorzystywanie informacji w celu poprawy działa
 
 Pielęgnacja bazy danych restauracji powinna obejmować następujące kroki:
 
-Regularne backupowanie bazy danych: Aby uniknąć utraty danych w przypadku awarii systemu lub innych problemów technicznych, należy regularnie tworzyć kopie zapasowe bazy danych i przechowywać je na bezpiecznym dysku lub w chmurze.
+**Regularne backupowanie bazy danych**: Aby uniknąć utraty danych w przypadku awarii systemu lub innych problemów technicznych, należy regularnie tworzyć kopie zapasowe bazy danych i przechowywać je na bezpiecznym dysku lub w chmurze.
 
-Czyszczenie i archiwizacja danych: Regularnie należy czyścić bazę danych, usuwając niepotrzebne dane, takie jak stare rezerwacje lub zamówienia. Dane, które nie są już potrzebne, powinny być archiwizowane, aby nie zajmowały miejsca na serwerze.
+**Czyszczenie i archiwizacja danych**: Regularnie należy czyścić bazę danych, usuwając niepotrzebne dane, takie jak stare rezerwacje lub zamówienia. Dane, które nie są już potrzebne, powinny być archiwizowane, aby nie zajmowały miejsca na serwerze.
 
 ## Diagram Relacji
 
