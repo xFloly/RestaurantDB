@@ -86,6 +86,7 @@ Typowe zapytania realizowane są w formie widoków oraz funkcji.
 ## Widoki
 
 **allMenu**:
+
 wyświetla wszystie pozycje, które kiedykolwiek wytąpiły w Menu
 
 ```
@@ -105,6 +106,7 @@ inner join Dishes D on D.DishID= M.DishID
 go
 ```
 **QuantityOfOrderedDishes**:
+
 wyświetla ilość zamówień na każdy produkt
 ```
 create view QuantityOfOrderedDishes
@@ -123,6 +125,7 @@ from Dishes D
 go
 ```
 **CurrentMenu**: 
+
 wypisuje w przejrzysty sposób aktualne menu: ID, nazwe dania, cene i kategorie
 ```
 create view CurrentMenu as
@@ -139,6 +142,7 @@ where M.OutDate is null or M.OutDate > getdate()
 go
 ```
 **allReservations**: 
+
 pokazuje wszystkie dotychczasz zlozone rezerwacje
 z rozróżnieniem czy rezerwwacja została wykonana przez firme czy indywidualna jednostke
 ```
