@@ -85,8 +85,9 @@ Typowe zapytania realizowane są w formie widoków oraz funkcji.
 
 ## Widoki
 
-**allMenu**: wyświetla wszystie pozycje, które kiedykolwiek wytąpiły w Menu
-`#0969DA`
+**allMenu**:
+wyświetla wszystie pozycje, które kiedykolwiek wytąpiły w Menu
+
 ```
 
 create view allMenu
@@ -103,7 +104,8 @@ inner join Dishes D on D.DishID= M.DishID
 
 go
 ```
-**QuantityOfOrderedDishes**: wyświetla ilość zamówień na każdy produkt
+**QuantityOfOrderedDishes**:
+wyświetla ilość zamówień na każdy produkt
 ```
 create view QuantityOfOrderedDishes
 as
@@ -120,7 +122,8 @@ from Dishes D
 
 go
 ```
-**CurrentMenu**: wypisuje w przejrzysty sposób aktualne menu: ID, nazwe dania, cene i kategorie
+**CurrentMenu**: 
+wypisuje w przejrzysty sposób aktualne menu: ID, nazwe dania, cene i kategorie
 ```
 create view CurrentMenu as
 
