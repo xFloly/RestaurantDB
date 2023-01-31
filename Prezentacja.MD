@@ -67,6 +67,21 @@ Aby mieć pewność, że w bazie będą poprawne dane wszelkie aktualizacje, wst
 ![image](https://user-images.githubusercontent.com/101994826/215908762-cff8f12b-90dd-4e8f-bfa7-c81ffa2b4b94.png)
 
 
+**Reservations**:
+![image](https://user-images.githubusercontent.com/101994826/215909012-a2736cac-ca63-4b19-bbea-023905a65dd0.png)
+
+**Tables**:
+![image](https://user-images.githubusercontent.com/101994826/215909200-b10496f5-5895-4147-be89-7e2772868d3c.png)
+
+**TableReservations**:
+![image](https://user-images.githubusercontent.com/101994826/215909335-7486b68d-98b8-4d05-8f8b-2ad5e6bac55a.png)
+
+
+**Discount**:
+![image](https://user-images.githubusercontent.com/101994826/215909400-d1bb5cc5-857e-47c2-a6ca-a89f63351348.png)
+
+**Employees**:
+![image](https://user-images.githubusercontent.com/101994826/215909655-c489ce3a-b3bc-4475-bd32-9d6914df0801.png)
 
 ## Indeksy
 **Categories_pk**:
