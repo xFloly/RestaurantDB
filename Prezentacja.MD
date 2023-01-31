@@ -21,6 +21,28 @@ Czyszczenie i archiwizacja danych: Regularnie należy czyścić bazę danych, us
 ![Tabelki1](https://user-images.githubusercontent.com/101994826/215623823-5bc9791e-b6fd-48d3-b2db-a4420b264c40.png)
 ![Tabelki2](https://user-images.githubusercontent.com/101994826/215623833-4dd1a044-8ff2-4c19-a003-f556e127bcf4.png)
 
+## Indeksy
+**This is bold text**
+create unique index Categories_pk
+on Categories(CategoryID)
+go
+
+create unique index Dishes_pk
+on Dishes(DishID)
+go
+
+create unique index Menu_pk
+on Menu(MenuPositionID)
+go
+
+create unique index Orders_pk
+on Orders(OrderID)
+go
+
+create unique index Customers_pk
+on Customers(CustomerID)
+go
+
 ## Typowe zapytania
 
 Typowe zapytania realizowane są w formie widoków oraz funkcji.
