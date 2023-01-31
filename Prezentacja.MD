@@ -48,39 +48,49 @@ Regularnie należy czyścić bazę danych, usuwając niepotrzebne dane, takie ja
 Aby mieć pewność, że w bazie będą poprawne dane wszelkie aktualizacje, wstawienia oraz usunięcia rekorów kontrolowane są przez wyzwalacze oraz ograniczenia nałożone na tabele podczas tworzenia.
 
 **Categories**:
+
 ![image](https://user-images.githubusercontent.com/101994826/215907740-5388df42-ed63-4f44-aec6-f40939995cee.png)
 
 
 **Dishes**:
+
 ![image](https://user-images.githubusercontent.com/101994826/215908034-ef3066ec-4aad-46f1-b3e2-fa5f673a9828.png)
 
 
 **Menu**:
+
 ![image](https://user-images.githubusercontent.com/101994826/215908470-6583bdfe-a48d-4c27-9f3b-15ceb38ca6d9.png)
 
 
 **Companies**:
+
 ![image](https://user-images.githubusercontent.com/101994826/215908677-93e69db8-2beb-4599-9e88-b87af5ee2b13.png)
 
 
 **Person**:
+
 ![image](https://user-images.githubusercontent.com/101994826/215908762-cff8f12b-90dd-4e8f-bfa7-c81ffa2b4b94.png)
 
 
 **Reservations**:
+
 ![image](https://user-images.githubusercontent.com/101994826/215909012-a2736cac-ca63-4b19-bbea-023905a65dd0.png)
 
 **Tables**:
+
 ![image](https://user-images.githubusercontent.com/101994826/215909200-b10496f5-5895-4147-be89-7e2772868d3c.png)
 
 **TableReservations**:
+
 ![image](https://user-images.githubusercontent.com/101994826/215909335-7486b68d-98b8-4d05-8f8b-2ad5e6bac55a.png)
 
 
 **Discount**:
+
 ![image](https://user-images.githubusercontent.com/101994826/215909400-d1bb5cc5-857e-47c2-a6ca-a89f63351348.png)
 
 **Employees**:
+
 ![image](https://user-images.githubusercontent.com/101994826/215909655-c489ce3a-b3bc-4475-bd32-9d6914df0801.png)
 
 ## Indeksy
