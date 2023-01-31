@@ -44,31 +44,36 @@ Regularnie należy czyścić bazę danych, usuwając niepotrzebne dane, takie ja
 ![Tabelki2](https://user-images.githubusercontent.com/101994826/215623833-4dd1a044-8ff2-4c19-a003-f556e127bcf4.png)
 
 ## Indeksy
-**Categories_pk**: ustawienie indeksu na CategoryID w Categories
+**Categories_pk**:
+ustawienie indeksu na CategoryID w Categories
 ```
 create unique index Categories_pk
 on Categories(CategoryID)
 go
 ```
-**Dishes_pk**: ustawienie indeksu na DishID w Dishes
+**Dishes_pk**:
+ustawienie indeksu na DishID w Dishes
 ```
 create unique index Dishes_pk
 on Dishes(DishID)
 go
 ```
-**Menu_pk**: ustawienie indeksu na MenuPositionID w Menu 
+**Menu_pk**: 
+ustawienie indeksu na MenuPositionID w Menu 
 ```
 create unique index Menu_pk
 on Menu(MenuPositionID)
 go
 ```
-**Orders_pk**: ustawienie indeksu na OrderID w Orders
+**Orders_pk**:
+ustawienie indeksu na OrderID w Orders
 ```
 create unique index Orders_pk
 on Orders(OrderID)
 go
 ```
-**Customers_pk**: ustawienie indeksu na CustomerID w Customers
+**Customers_pk**:
+ustawienie indeksu na CustomerID w Customers
 ```
 create unique index Customers_pk
 on Customers(CustomerID)
