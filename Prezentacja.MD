@@ -14,7 +14,7 @@ Czyszczenie i archiwizacja danych: Regularnie należy czyścić bazę danych, us
 
 ## Diagram Bazy
 
-![diagram1](https://user-images.githubusercontent.com/101994826/215624565-ccb83fa2-9b8a-46a7-9c52-8427e6d79eec.jpg)
+
 
 ## Tabele
 
@@ -58,3 +58,79 @@ Typowe zapytania realizowane są w formie widoków oraz funkcji.
 
 ## Widoki
 
+**allMenu**: wyświetla wszystie pozycje, które kiedykolwiek wytąpiły w Menu
+```
+create view allMenu
+as
+
+select 	M.MenuPositionID,
+	M.DishID,
+	D.Name,
+	M.DishPrice,
+	M.InDate,
+	M.OutDate
+from Menu as M
+inner join Dishes D on D.DishID= M.DishID
+
+go
+```
+**QuantityOfOrderedDishes**: wyświetla ilość zamówień na każdy produkt
+```
+create view QuantityOfOrderedDishes
+as
+
+select 	D.Name,
+	(select  COUNT(*)
+		from Dishes D1
+		inner join Menu M
+		on D1.DishID = M.DishID
+		inner join OrderDetails OD on
+		M.MenuPositionID = OD.MenuPosID
+		where D.DishId = D1.DishID) as DishQuantitiy
+from Dishes D
+
+go
+```
+**CurrentMenu**: wwypisuje w przejrzysty sposób aktualne menu: ID, nazwe dania, cene i kategorie
+```
+create view CurrentMenu as
+
+select 	M.DishID,
+	D.Name,
+	M.DishPrice,
+	C.CategoryName
+from Menu as M
+inner join Dishes D on D.dISHID = M.DishID
+inner join Categories C on C.CategoryID = D.CategoryID
+where M.OutDate is null or M.OutDate > getdate()
+
+go
+```
+**allReservations**: 
+pokazuje wszystkie dotychczasz zlozone rezerwacje
+z rozróżnieniem czy rezerwwacja została wykonana przez firme czy indywidualna jednostke
+```
+create view allReservations as
+select R.ReservationID,
+	R.CustomerID,
+	R.StartDate,
+	'Individual' as Customer,
+	YEAR(R.StartDate) as [Year],
+	MONTH(R.StartDate) as [Month]
+from Reservations R
+join IndividualReservations IR
+on R.ReservationID = IR.ReservationID
+
+union 
+
+select R.ReservationID,
+	R.CustomerID,
+	R.StartDate,
+	'Company' as Customer,
+	YEAR(R.StartDate) as [Year],
+	MONTH(R.StartDate) as [Month]
+from Reservations R
+join CompanyReservations CR
+on R.ReservationID = CR.ReservationID
+go
+```
