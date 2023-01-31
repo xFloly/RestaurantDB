@@ -91,7 +91,7 @@ from Dishes D
 
 go
 ```
-**CurrentMenu**: wwypisuje w przejrzysty sposób aktualne menu: ID, nazwe dania, cene i kategorie
+**CurrentMenu**: wypisuje w przejrzysty sposób aktualne menu: ID, nazwe dania, cene i kategorie
 ```
 create view CurrentMenu as
 
@@ -134,3 +134,4 @@ join CompanyReservations CR
 on R.ReservationID = CR.ReservationID
 go
 ```
+
