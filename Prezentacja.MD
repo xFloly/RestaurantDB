@@ -10,7 +10,7 @@ Czyszczenie i archiwizacja danych: Regularnie należy czyścić bazę danych, us
 
 ## Diagram Bazy
 
-[diagram (1).pdf](https://github.com/xFloly/RestaurantDB/files/10540994/diagram.1.pdf)
+![diagram1](https://user-images.githubusercontent.com/101994826/215624565-ccb83fa2-9b8a-46a7-9c52-8427e6d79eec.jpg)
 
 ## Tabele
 
