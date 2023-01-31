@@ -12,7 +12,7 @@ Regularne backupowanie bazy danych: Aby uniknąć utraty danych w przypadku awar
 
 Czyszczenie i archiwizacja danych: Regularnie należy czyścić bazę danych, usuwając niepotrzebne dane, takie jak stare rezerwacje lub zamówienia. Dane, które nie są już potrzebne, powinny być archiwizowane, aby nie zajmowały miejsca na serwerze.
 
-## Diagram Bazy
+## Diagram Relacji
 
 
 
