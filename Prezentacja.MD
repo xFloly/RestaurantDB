@@ -246,13 +246,13 @@ create view CustomersOrders
 as
 
 select O.OrderID,
-C.CustomerID,
-P.LastName + ' ' + P.FirstName as [Name],
-ROUND(SUM(M.DishPrice * Od.Quantity * (1 - ISNULL(dbo.udfGetDiscount(O.OrderID, C.CustomerID), 0))),2) as [Order Price],
-O.OrderDate,
-'Person' as [Type],
-YEAR(O.OrderDate) as [Year],
-MONTH(O.OrderDate) as [Month]
+	C.CustomerID,
+	P.LastName + ' ' + P.FirstName as [Name],
+	ROUND(SUM(M.DishPrice * Od.Quantity * (1 - ISNULL(dbo.udfGetDiscount(O.OrderID, C.CustomerID), 0))),2) as [Order Price],
+	O.OrderDate,
+	'Person' as [Type],
+	YEAR(O.OrderDate) as [Year],
+	MONTH(O.OrderDate) as [Month]
 from Orders O
 join OrderDetails OD on OD.OrderID = o.OrderID
 join Menu M on M.MenuPositionID = OD.MenuPosID
@@ -265,13 +265,13 @@ group by O.OrderID, C.CustomerID, P.LastName + ' ' + P.FirstName, O.OrderDate
 union 
 
 select O.OrderID,
-C.CustomerID,
-Co.CompanyName as [Name],
-ROUND(SUM(M.DishPrice * Od.Quantity * (1 - ISNULL(dbo.udfGetDiscount(O.OrderID, C.CustomerID), 0))),2) as [Order Price],
-O.OrderDate,
-'Company' as [Type],
-YEAR(O.OrderDate) as [Year],
-MONTH(O.OrderDate) as [Month]
+	C.CustomerID,
+	Co.CompanyName as [Name],
+	ROUND(SUM(M.DishPrice * Od.Quantity * (1 - ISNULL(dbo.udfGetDiscount(O.OrderID, C.CustomerID), 0))),2) as [Order Price],
+	O.OrderDate,
+	'Company' as [Type],
+	YEAR(O.OrderDate) as [Year],
+	MONTH(O.OrderDate) as [Month]
 from Orders O
 join OrderDetails OD on OD.OrderID = o.OrderID
 join Menu M on M.MenuPositionID = OD.MenuPosID
@@ -291,9 +291,9 @@ create view amountOfOrders
 as
 
 select  C.CustomerID,
-P.LastName + ' ' + P.FirstName as [Name],
-count(O.OrderID) as Amount,
-'Person' as [Type]
+	P.LastName + ' ' + P.FirstName as [Name],
+	count(O.OrderID) as Amount,
+	'Person' as [Type]
 from Orders O
 join OrderDetails OD on OD.OrderID = o.OrderID
 join Menu M on M.MenuPositionID = OD.MenuPosID
@@ -306,9 +306,9 @@ group by O.OrderID, C.CustomerID, P.LastName + ' ' + P.FirstName, O.OrderDate
 union 
 
 select C.CustomerID,
-Co.CompanyName as [Name],
-count(O.OrderID) as Amount,
-'Company' as [Type]
+	Co.CompanyName as [Name],
+	count(O.OrderID) as Amount,
+	'Company' as [Type]
 from Orders O
 join OrderDetails OD on OD.OrderID = o.OrderID
 join Menu M on M.MenuPositionID = OD.MenuPosID
