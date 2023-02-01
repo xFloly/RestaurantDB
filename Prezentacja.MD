@@ -399,11 +399,10 @@ CREATE FUNCTION udfGetDiscount(@order_id int, @customer_id int)
 returns float as
 begin
 declare @x float;
-SET @x = ISNULL((
-select DiscountValue
-from Discount D
-join Orders O on @order_id = O.OrderID
-where (D.CustomerID = @customer_id and O.OrderDate >= D.ValidFrom)),0)
+SET @x = ISNULL(( select DiscountValue
+		from Discount D
+		join Orders O on @order_id = O.OrderID
+		where (D.CustomerID = @customer_id and O.OrderDate >= D.ValidFrom)),0)
 return @x
 end
 go
@@ -416,10 +415,9 @@ CREATE FUNCTION udfGetOrderPrice(@order_id int)
 returns float as
 begin
 declare @x float;
-SET @x = ISNULL((
-select CO.[Order Price]
-from CustomersOrders CO
-where OrderID = @order_id),-1)
+SET @x = ISNULL(( select CO.[Order Price]
+		from CustomersOrders CO
+		where OrderID = @order_id),-1)
 return @x
 end
 go
