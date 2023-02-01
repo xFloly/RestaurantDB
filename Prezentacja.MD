@@ -157,7 +157,7 @@ go
 ```
 **QuantityOfOrderedDishes**:
 
-wyświetla ilość zamówień na każdy produkt
+wyświetla ilość zamówień na każde danie
 ```
 create view QuantityOfOrderedDishes
 as
