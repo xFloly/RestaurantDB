@@ -238,38 +238,6 @@ group by T.TableID, T.Quantity
 go
 ```
 
-**CustomersOrderSum**:
-
-suma zamowien każdego klienta
-```
-create view CustomersOrderSum 
-as
-
-select 	C.CustomerID,
-	O.OrderID,
-	ROUND(SUM(M.DishPrice * OD.Quantity), 2) as [Sum] 
-from Customers C
-join IndividualCustomers IC on C.CustomerID = IC.CustomerID
-join Person P on P.PerosnID = IC.PersonID
-join Orders O on C.CustomerID = O.CustomerID
-join OrderDetails OD on OD.OrderID = O.OrderID
-join Menu M on M.MenuPositionID = OD.MenuPosID
-group by c.CustomerID, o.OrderID
-
-union
-
-select 	C.CustomerID,
-	O.OrderID,
-	ROUND(SUM(M.DishPrice * OD.Quantity), 2) as [Sum]
-from Customers C
-join Companies Co on C.CustomerID = Co.CustomerID
-join Orders O on C.CustomerID = O.CustomerID
-join OrderDetails OD on OD.OrderID = O.OrderID
-join Menu M on M.MenuPositionID = OD.MenuPosID
-group by c.CustomerID, o.OrderID
-
-go
-```
 **CustomersOrders**:
 
 wartosc zamowien z nazwa, cena, czy jest to klient indywidualny czy firma oraz data zamowienia
