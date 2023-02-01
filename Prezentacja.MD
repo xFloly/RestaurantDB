@@ -99,35 +99,35 @@ Aby mieć pewność, że w bazie będą poprawne dane wszelkie aktualizacje, wst
 ## Indeksy
 **Categories_pk**:
 ustawienie indeksu na CategoryID w Categories
-```
+```tsql
 create unique index Categories_pk
 on Categories(CategoryID)
 go
 ```
 **Dishes_pk**:
 ustawienie indeksu na DishID w Dishes
-```
+```tsql
 create unique index Dishes_pk
 on Dishes(DishID)
 go
 ```
 **Menu_pk**: 
 ustawienie indeksu na MenuPositionID w Menu 
-```
+```tsql
 create unique index Menu_pk
 on Menu(MenuPositionID)
 go
 ```
 **Orders_pk**:
 ustawienie indeksu na OrderID w Orders
-```
+```tsql
 create unique index Orders_pk
 on Orders(OrderID)
 go
 ```
 **Customers_pk**:
 ustawienie indeksu na CustomerID w Customers
-```
+```tsql
 create unique index Customers_pk
 on Customers(CustomerID)
 go
@@ -142,7 +142,7 @@ Typowe zapytania realizowane są w formie widoków oraz funkcji.
 
 wyświetla wszystie pozycje, które kiedykolwiek wytąpiły w Menu
 
-```
+```tsql
 
 create view allMenu
 as
@@ -161,7 +161,7 @@ go
 **QuantityOfOrderedDishes**:
 
 wyświetla ilość zamówień na każde danie
-```
+```tsql
 create view QuantityOfOrderedDishes
 as
 
@@ -180,7 +180,7 @@ go
 **CurrentMenu**: 
 
 wypisuje w przejrzysty sposób aktualne menu: ID, nazwe dania, cene i kategorie
-```
+```tsql
 create view CurrentMenu as
 
 select 	M.DishID,
@@ -198,7 +198,7 @@ go
 
 pokazuje wszystkie dotychczasz zlozone rezerwacje
 z rozróżnieniem czy rezerwwacja została wykonana przez firme czy indywidualna jednostke
-```
+```tsql
 create view allReservations as
 select R.ReservationID,
 	R.CustomerID,
@@ -226,7 +226,7 @@ go
 **allTableStats**:
 
 statystyki zwiazane z rezerwacja danych stolikow
-```
+```tsql
 create view allTableStats
 as
 
@@ -244,7 +244,7 @@ go
 **CustomersOrders**:
 
 wartosc zamowien z nazwa, cena, czy jest to klient indywidualny czy firma oraz data zamowienia
-```
+```tsql
 create view CustomersOrders
 as
 
@@ -289,7 +289,7 @@ go
 **amountOfOrders**:
 
 ilosc zamowien wykonanych przez klienta z rozroznieniem czy jest to firma czy indywidualna jednostka
-```
+```tsql
 create view amountOfOrders
 as
 
@@ -326,7 +326,7 @@ go
 **suppliersInfo**:
 
 wyswietla informacje dotyczące dostawców
-```
+```tsql
 create view suppliersInfo
 as
 
@@ -351,7 +351,7 @@ go
 **udfGetBestSellingDishes**:
 
 zwraca top `x` najlepiej sprzedajacych sie dan
-```
+```tsql
 create function udfGetBestSellingDishes(@x int)
 
 returns table as return
@@ -365,7 +365,7 @@ go
 **udfGetDiscount**:
 
 zwraca znizke klienta na danym zamoieniu
-```
+```tsql
 CREATE FUNCTION udfGetDiscount(@order_id int, @customer_id int)
 returns float as
 begin
@@ -381,7 +381,7 @@ go
 **udfGetOrderPrice**:
 
 zwraca wartosc zamowienia przekazanego parametrem
-```
+```tsql
 CREATE FUNCTION udfGetOrderPrice(@order_id int)
 returns float as
 begin
@@ -396,7 +396,7 @@ go
 **udfGetMenuPositionsBetween**:
 
 zwraca pozycje z menu znajdujace sie miedzy wartosciami przekazanymi w parametrach
-```
+```tsql
 CREATE FUNCTION udfGetMenuPositionsBetween(@x int, @y int)
 returns table as
 return
@@ -417,7 +417,7 @@ go
 
 Wyrzuca dania znajdujące się w aktualnym Menu dłużej niż 2 tygodnie, 
 tzn. ustawia ich “OutDate” na równy dacie uruchomienia procedury
-```
+```tsql
 create procedure uspCheckMenu
 AS
 BEGIN
@@ -450,7 +450,7 @@ GO
 
 Dodaje firmę o nazwie “companyName” oraz NIPie “NIP” 
 z miasta o ID “CityID” do tabeli Company i Customers
-```
+```tsql
 CREATE PROCEDURE [dbo].[uspInsertCompany] @companyName nvarchar(50), @NIP nvarchar(50), @CityID int
 AS
 BEGIN
@@ -479,7 +479,7 @@ go
 Dodaje dane osoby o imieniu “firstname”, nazwisku “lastname”, 
 numerze telefonu “phone” i “ID” do tabeli Person
 
-```
+```tsql
 CREATE PROCEDURE uspInsertPerson @firstname nvarchar(50), @lastname nvarchar(50), @phone nvarchar(50), @PersonID int
 AS
 BEGIN
@@ -510,7 +510,7 @@ go
 Dodaje klienta o danym imieniu “firstname”, nazwisku “lastname”, 
 numerze telefonu “phone” z miasta “CityID” do tabeli IndividualCustomers,
 Customers oraz Person
-```
+```tsql
 CREATE PROCEDURE [dbo].[uspInsertIndividualCustomer] @firstname nvarchar(50), @lastname nvarchar(50), @phone nvarchar(50), @CityID int
 AS
 BEGIN
@@ -541,7 +541,7 @@ go
 
 Dodaje szczegóły dotyczące zamówenia o ID “OrderID” tzn. 
 jakie danie oraz w jakiej ilości zamówiono
-```
+```tsql
 CREATE PROCEDURE uspInsertOrderDetailsToOrder @OrderID int,
                                              @MenuPositionID int,
                                              @Quantity int
@@ -581,7 +581,7 @@ go
 **trCheckMenuPositions**:
 
 Uruchamia procedurę “uspCheckMenu” jeśli modyfikujemy tabelę Menu
-```
+```tsql
 CREATE trigger trCheckMenuPositions
    ON Menu
    AFTER INSERT, UPDATE
@@ -597,7 +597,7 @@ GO
 
 wyrzuca pozycje w menu po dacie "OutDate"
 
-```
+```tsql
 CREATE TRIGGER trMenuOutDate
 ON Menu
 AFTER INSERT, UPDATE
@@ -613,7 +613,7 @@ GO
 **trEmployeesDelete**:
 
 przy usuwaniu pracownika, wszyscy jego podwładni są przypisywani do jego zwierzchnika
-```
+```tsql
 CREATE TRIGGER trEmployeesDelete
 ON Employees
 AFTER DELETE
@@ -629,7 +629,7 @@ GO
 **trOrdersInsert**:
 
 Przyznaje zniżkę 10% dla danego klienta przy jego 10tym zamówieniu
-```
+```tsql
 CREATE TRIGGER trOrdersInsert
 ON Orders
 AFTER INSERT
@@ -651,7 +651,7 @@ GO
 **trTableReservationsCheck**:
 
 sprawdza czy dany stolik jest już zarezerwowany w danym czasie przed dodaniem nowej rezerwacji
-```
+```tsql
 CREATE TRIGGER trTableReservationsCheck
 ON TableReservations
 AFTER INSERT
@@ -673,7 +673,7 @@ GO
 **trReservationCheck**:
 
 sprawdza, czy jest wystarczająco miejsca na daną liczbę osób przy składaniu rezerwacji
-```
+```tsql
 CREATE TRIGGER trReservationCheck
 ON Reservations
 AFTER INSERT
