@@ -187,7 +187,7 @@ select 	M.DishID,
 from Menu as M
 inner join Dishes D on D.dISHID = M.DishID
 inner join Categories C on C.CategoryID = D.CategoryID
-where M.OutDate is null or M.OutDate > getdate()
+where M.OutDate is null or M.OutDate > getdate() and M.InDate <= getdate()
 
 go
 ```
