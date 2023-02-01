@@ -10,14 +10,12 @@ Stworzenie bazy danych restauracji, aby umożliwić łatwe i szybkie zarządzani
 
 Przechowywanie informacji o menu, cenach i dostępności potraw
 Rejestrowanie i przeglądanie informacji o klientach i ich rezerwacjach
-Śledzenie transakcji i obliczanie wyniku finansowego restauracji
 Generowanie raportów i analiz dotyczących sprzedaży i popularności poszczególnych potraw
 Umożliwienie wygodnego wyszukiwania i sortowania informacji w bazie danych
 
 **Główne załozenia**:
 
 Baza danych będzie prosta i łatwa w użyciu dla personelu restauracji
-Będzie zabezpieczona i chroniona przed nieautoryzowanym dostępem
 Będzie umożliwiać wygodne i szybkie wprowadzanie i aktualizację danych
 Będzie umożliwiać efektywne wykorzystywanie informacji w celu poprawy działania restauracji i zwiększenia zysków.
 
